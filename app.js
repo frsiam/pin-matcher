@@ -8,22 +8,33 @@ function getPin(){
         return getPin()
     }
 }
+
 function generatePin(){
     const pin = getPin();
     document.getElementById('pin-output').value = pin;
 }
+
 document.getElementById('key-pad').addEventListener('click',function(e){
     const number = e.target.innerText;
     const calcInput = document.getElementById('display')
     if(isNaN(number)){
         if(number == 'C'){
-            calcInput.value = '';
+            calcInput.value = '';   
         }
     }
     else{
-        let previouNumber = calcInput.value;
+        const previouNumber = calcInput.value;
         const newNumber = previouNumber + number;
-        calcInput.value = newNumber;
+        calcInput.value = newNumber;     
     }
-    
 })
+function verifyPin(){
+    const generatedPin = document.getElementById('pin-output').value;
+    const typedPin = document.getElementById('display').value;
+    if(generatedPin == typedPin){
+        alert('milse');
+    }
+    else{
+        alert('sorry');
+    }
+}
