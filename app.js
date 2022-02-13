@@ -9,14 +9,18 @@ function getPin(){
     }
 }
 
-function generatePin(){
-    const pin = getPin();
-    document.getElementById('pin-output').value = pin;
+function catchElement(id){
+    return document.getElementById(id);
 }
 
-document.getElementById('key-pad').addEventListener('click',function(e){
+function generatePin(){
+    const pin = getPin();
+    catchElement('pin-output').value = pin;
+}
+
+catchElement('key-pad').addEventListener('click',function(e){
     const number = e.target.innerText;
-    const calcInput = document.getElementById('display')
+    const calcInput = catchElement('display')
     if(isNaN(number)){
         if(number == 'C'){
             calcInput.value = '';   
@@ -29,14 +33,14 @@ document.getElementById('key-pad').addEventListener('click',function(e){
     }
 })
 function verifyPin(){
-    const generatedPin = document.getElementById('pin-output').value;
-    const typedPin = document.getElementById('display').value;
+    const generatedPin = catchElement('pin-output').value;
+    const typedPin = catchElement('display').value;
     if(generatedPin == typedPin){
-        document.getElementById('matched').style.display = 'block';
-        document.getElementById('not-matched').style.display = 'none';
+        catchElement('matched').style.display = 'block';
+        catchElement('not-matched').style.display = 'none';
     }
     else{
-        document.getElementById('not-matched').style.display = 'block';
-        document.getElementById('matched').style.display = 'none';
+        catchElement('not-matched').style.display = 'block';
+        catchElement('matched').style.display = 'none';
     }
 }
