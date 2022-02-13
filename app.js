@@ -32,9 +32,11 @@ function verifyPin(){
     const generatedPin = document.getElementById('pin-output').value;
     const typedPin = document.getElementById('display').value;
     if(generatedPin == typedPin){
-        alert('milse');
+        document.getElementById('matched').style.display = 'block';
+        document.getElementById('not-matched').style.display = 'none';
     }
     else{
-        alert('sorry');
+        document.getElementById('not-matched').style.display = 'block';
+        document.getElementById('matched').style.display = 'none';
     }
 }
